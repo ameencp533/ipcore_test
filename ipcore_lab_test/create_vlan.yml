@@ -1,0 +1,12 @@
+---
+- name: Create VLAN on IOS device
+  hosts: ios
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Configure VLAN
+      ios_config:
+        lines:
+          - vlan 10
+          - name Test_VLAN
+        save_when: modified
